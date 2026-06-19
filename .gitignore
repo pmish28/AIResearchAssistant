@@ -1,0 +1,34 @@
+# 🐍 Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Data / local files
+data/
+vector_store/
+
+# Logs
+*.log
+
+# Jupyter (if you ever use notebooks)
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+
+# HuggingFace / model caches
+.cache/
