@@ -1,10 +1,11 @@
-
 from pathlib import Path
 from pypdf import PdfReader
+from core.agent import Agent
 from sklearn import pipeline
 from core.chunker import chunk_text
 from core.document_loader import load_pdf
 from core.llm import LLM
+from core.memory import Memory
 from core.rag import RAGPipeline
 from core.embeddings import EmbeddingService
 
@@ -23,8 +24,11 @@ if __name__ == "__main__":
     
     rag = RAGPipeline(embedder, llm, index, chunks)
 
+    memory = Memory()
+    agent = Agent(rag, llm, memory)
+
     while True: 
-        query = input("Enter your question (or type 'exit' to quit): ")
-        if query.lower() == 'exit':
-            break
-        print(rag.answer_question(query))
+        query = input("You:")
+        response = agent.run(query)
+        print(f"AI agent run generated this answer: {response} ")
+        
